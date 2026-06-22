@@ -40,4 +40,4 @@ app.include_router(vote.router)
 
 @app.get("/")
 def welcome():
-    return {"mes": "welcome!!!!!!!"}
+    return {"mes": "我在你们这里买东西已经发现了三个问题"}
