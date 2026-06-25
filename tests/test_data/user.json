@@ -1,0 +1,15 @@
+{
+  "existing_user": {
+    "email": "22665584945@qq.com",
+    "password": "546898145418mrwr"
+  },
+  "new_user": {
+    "email": "551164912@qq.com",
+    "password": "221154972"
+  },
+  "wrong_password": "wrong-password",
+  "password_update": {
+    "new_password": "new-password",
+    "mismatched_confirm_password": "different-password"
+  }
+}

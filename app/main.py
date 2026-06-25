@@ -8,11 +8,10 @@ from app.router import posts
 from app.router import auth
 from app.router import vote
 
-# 创建表
-models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
 # 限制可以访问api的范围
+#如果后续前端有域名请添加上去
 origins = [
     "http://localhost.tiangolo.com",
     "https://localhost.tiangolo.com",
