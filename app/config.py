@@ -12,7 +12,6 @@ class Settings(BaseSettings):
     database_name: str | None = Field(default=None, alias="DATABASE_NAME")
     database_user: str | None = Field(default=None, alias="DATABASE_USER")
     database_password: SecretStr | None = Field(default=None, alias="DATABASE_PASSWORD")
-
     jwt_secret_key: SecretStr = Field(..., alias="JWT_SECRET_KEY")
     jwt_algorithm: str = Field(..., alias="JWT_ALGORITHM")
     access_token_expire_minutes: int = Field(..., alias="ACCESS_TOKEN_EXPIRE_MINUTES", gt=0)
