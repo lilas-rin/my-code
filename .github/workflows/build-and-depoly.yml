@@ -1,4 +1,4 @@
-name: FastAPI CI/CD
+name: FastAPI CI
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  test:
+ test:
     runs-on: ubuntu-latest
     env:
       DATABASE_DRIVER: ${{ secrets.DATABASE_DRIVER }}
@@ -16,7 +16,6 @@ jobs:
       DATABASE_NAME: ${{ secrets.DATABASE_NAME }}
       DATABASE_USER: ${{ secrets.DATABASE_USER }}
       DATABASE_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
-
       JWT_SECRET_KEY: ${{ secrets.JWT_SECRET_KEY }}
       JWT_ALGORITHM: ${{ secrets.JWT_ALGORITHM }}
       ACCESS_TOKEN_EXPIRE_MINUTES: ${{ secrets.ACCESS_TOKEN_EXPIRE_MINUTES }}
@@ -31,26 +30,7 @@ jobs:
           python-version: "3.11"
 
       - name: Install dependencies
-        run: |
-          pip install -r requirements.txt
+        run: pip install -r requirements.txt
 
       - name: Run tests
-        run: |
-          pytest
-
-  deploy:
-    needs: test
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Deploy to Ubuntu Server
-        uses: appleboy/ssh-action@v1.0.3
-        with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          key: ${{ secrets.SSH_KEY }}
-          script: |
-            cd /home/mrwr/app/src
-            git pull origin main
-            sudo systemctl restart fastapi
-            sudo systemctl status fastapi --no-pager
+        run: pytest
